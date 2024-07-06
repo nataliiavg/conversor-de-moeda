@@ -30,7 +30,7 @@ public class ConversaoDeMoeda {
         return switch (moeda) {
             case "BRL" -> "R$" + decimalFormat.format(valor);
             case "USD" -> "$" + decimalFormat.format(valor);
-            case "ARS" -> "$" + decimalFormat.format(valor);
+            case "ARS" -> "ARS" + decimalFormat.format(valor);
             case "EUR" -> "€" + decimalFormat.format(valor);
             default -> decimalFormat.format(valor) + " " + moeda;
         };
