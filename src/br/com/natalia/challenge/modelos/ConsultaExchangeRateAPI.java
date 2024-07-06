@@ -15,17 +15,13 @@ import java.net.http.HttpResponse;
 public class ConsultaExchangeRateAPI {
     public double pegaCotacao(String moedaInicial, String moedaConvertida) {
 
-        String chaveAPI = "2aa7729dd2f29444823e008b";
-        URI endereco = URI.create("https://v6.exchangerate-api.com/v6/" + chaveAPI + "/latest/" + moedaInicial);
-
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(endereco)
-                .build();
         try {
-            HttpResponse<String> response = client
-                    .send(request, HttpResponse.BodyHandlers.ofString());
+            // Requisição
+            String chaveAPI = "2aa7729dd2f29444823e008b";
+            URL endereco = new URL("https://v6.exchangerate-api.com/v6/" + chaveAPI + "/latest/" + moedaInicial);
+            HttpURLConnection request = (HttpURLConnection)endereco.openConnection();
 
+            // Conversão para JSON
             JsonParser jsonParser = new JsonParser();
             JsonElement elementoJson = jsonParser.parse(new InputStreamReader((InputStream)request.getContent()));
             JsonObject objetoJson = elementoJson.getAsJsonObject();
@@ -34,7 +30,7 @@ public class ConsultaExchangeRateAPI {
 
 
             return taxasDeConversao.get(moedaConvertida).getAsDouble();
-        } catch (IOException | InterruptedException e){
+        } catch (IOException e){
             System.out.println("Houve um erro durante a consulta à API ExchangeRate ." + e.getMessage());
             e.printStackTrace();
             return 0;
