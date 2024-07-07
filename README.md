@@ -1,6 +1,6 @@
 <h1> 💰 Challenge Conversor de Moeda 💰 </h1> 
 
-![Badge do Challenge]([https://ibb.co/mvDx25r](https://imgur.com/a/3Wqj7Xh))
+![Badge do Challenge](https://github.com/nataliiavg/conversor-de-moeda/blob/main/src/img/Badge-Conversor.png?raw=true)
 
 <p>Desafio proposto no curso de Java OO (Orientação de Objetos) do Programa One (Alura + Oracle).</p>
 
